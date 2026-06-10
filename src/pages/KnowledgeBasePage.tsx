@@ -10,7 +10,7 @@ export default function KnowledgeBasePage() {
   useEffect(() => {
     const tags = ['interpret:knowledge'];
     getClient()
-      .queryBreadcrumbs({ tags, limit: 50 })
+      .queryBreadcrumbs(tags, 50)
       .then((data: any) => {
         setArticles(Array.isArray(data) ? data : data?.breadcrumbs || []);
       })

@@ -17,7 +17,7 @@ export default function TicketsPage() {
     if (ticketFilter !== 'all') tags.push(`status:${ticketFilter}`);
 
     getClient()
-      .queryBreadcrumbs({ tags, limit: 100 })
+      .queryBreadcrumbs(tags, 100)
       .then((data: any) => {
         setTickets(Array.isArray(data) ? data : data?.breadcrumbs || []);
       })

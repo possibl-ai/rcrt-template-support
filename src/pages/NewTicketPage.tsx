@@ -17,11 +17,10 @@ export default function NewTicketPage() {
     try {
       const result = await getClient().createBreadcrumb({
         title: subject,
-        type: 'ticket',
         tags: ['type:ticket', 'status:open', `priority:${priority}`],
         content: { description, priority },
       });
-      navigate(`/ticket/${result.breadcrumb_id}`);
+      navigate(`/ticket/${result.id}`);
     } catch {
       setSubmitting(false);
     }

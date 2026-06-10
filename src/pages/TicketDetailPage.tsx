@@ -18,7 +18,7 @@ export default function TicketDetailPage() {
 
     Promise.all([
       getClient().getBreadcrumb(id),
-      getClient().queryBreadcrumbs({ tags: [`ticket:${id}`, 'type:message'], limit: 100 }),
+      getClient().queryBreadcrumbs([`ticket:${id}`, 'type:message'], 100),
     ])
       .then(([ticketData, msgData]: [any, any]) => {
         setTicket(ticketData);
@@ -42,7 +42,6 @@ export default function TicketDetailPage() {
     try {
       const created = await getClient().createBreadcrumb({
         title: text,
-        type: 'message',
         tags: [`ticket:${id}`, 'type:message'],
         content: { message: text },
       });
